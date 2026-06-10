@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin · hot.kitchen / cv</title>
+<style>
+  :root {
+    --accent: #1a1a1a;
+    --warm: #8b6f47;
+    --cream: #f5f1ea;
+    --sand: #e8dfd1;
+    --line: #d8d3c8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--cream);
+    color: var(--accent);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .topbar {
+    background: var(--accent);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .topbar h1 { font-size: 16px; font-weight: 500; letter-spacing: 0.05em; }
+  .topbar h1 span { color: var(--warm); }
+  .topbar-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .btn {
+    background: var(--warm);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 500;
+  }
+  .btn:hover { background: var(--accent); }
+  .btn-ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+  .btn-danger { background: #8a2a2a; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  .section {
+    background: #fff;
+    border: 1px solid var(--line);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+  }
+  .section h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--warm);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  .field {
+    margin-bottom: 1rem;
+  }
+  .field label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+  .field label small {
+    color: #999;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: 0.5rem;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--line);
+    background: #fafaf8;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--accent);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none;
+    border-color: var(--warm);
+    background: #fff;
+  }
+  .field textarea { min-height: 80px; resize: vertical; line-height: 1.5; }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 700px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--accent);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    font-size: 13px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    z-index: 200;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+  .toast.success { background: var(--warm); }
+  .toast.error { background: #8a2a2a; }
+  .login-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .login-box {
+    background: #fff;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+  }
+  .login-box h1 {
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .login-box h1 span { color: var(--warm); }
+  .login-box p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 1.5rem;
+  }
+  .login-box input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    margin-bottom: 1rem;
+    font-size: 15px;
+    text-align: center;
+  }
+  .login-box button {
+    width: 100%;
+    background: var(--warm);
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .login-box button:hover { background: var(--accent); }
+  .login-box .hint {
+    font-size: 11px;
+    color: #999;
+    margin-top: 1rem;
+  }
+  .icon-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .icon-row .field { flex: 1; margin-bottom: 0; }
+  .stat-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 12px;
+    color: #666;
+  }
+  .stat-bar strong { color: var(--warm); }
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-overlay" id="login">
+<div class="login-box">
+<h1>hot.kitchen <span>/</span> cv</h1>
+<p>Адмін-панель</p>
+<input id="password" placeholder="Пароль" type="password" autocomplete="off"/>
+<button onclick="checkLogin()">Увійти</button>
+<p class="hint">Пароль за замовчуванням: <code>hot2025</code></p>
+</div>
+</div>
+
+<!-- Topbar -->
+<div class="topbar">
+<h1>hot.kitchen <span>/</span> admin</h1>
+<div class="topbar-actions">
+<button class="btn btn-ghost" onclick="window.open('index.html','_blank')">↗ Відкрити сайт</button>
+<button class="btn" onclick="saveEdits()">💾 Зберегти</button>
+<button class="btn btn-ghost" onclick="exportJSON()">📥 Експорт JSON</button>
+<button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">📤 Імпорт</button>
+<input id="importFile" type="file" accept=".json" style="display:none" onchange="importJSON(event)"/>
+<button class="btn btn-danger" onclick="resetAll()">🗑 Скинути</button>
+</div>
+</div>
+
+<div class="container">
+<div class="stat-bar">
+<span>Всього полів: <strong id="statFields">0</strong></span>
+<span>Заповнено: <strong id="statFilled">0</strong></span>
+<span>Останнє збереження: <strong id="statSaved">ніколи</strong></span>
+</div>
+
+<!-- HERO -->
+<div class="section">
+<h2>Hero / Головна</h2>
+<div class="field">
+<label>Кікер (малий текст над іменем) <small>hero_kicker</small></label>
+<input data-edit="hero_kicker"/>
+</div>
+<div class="field">
+<label>Заголовок (МАРІЯ) <small>hero_title — можна використовувати HTML: &lt;br/&gt; &lt;span class="italic font-light"&gt;...&lt;/span&gt;</small></label>
+<textarea data-edit="hero_title" style="min-height:60px"></textarea>
+</div>
+<div class="field">
+<label>Підзаголовок <small>hero_subtitle</small></label>
+<textarea data-edit="hero_subtitle" style="min-height:60px"></textarea>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div class="section">
+<h2>About / Про мене</h2>
+<div class="field">
+<label>Абзац 1 <small>about_p1</small></label>
+<textarea data-edit="about_p1"></textarea>
+</div>
+<div class="field">
+<label>Абзац 2 <small>about_p2</small></label>
+<textarea data-edit="about_p2"></textarea>
+</div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+<h2>Experience / Досвід роботи</h2>
+<h3 style="font-size:12px;color:var(--warm);margin:0.5rem 0 1rem;font-weight:600">Запис 1: Кухар гарячої лінії</h3>
+<div class="grid-2">
+<div class="field">
+<label>Період <small>exp1_date</small></label>
+<input data-edit="exp1_date"/>
+</div>
+<div class="field">
+<label>Компанія <small>exp1_company</small></label>
+<input data-edit="exp1_company"/>
+</div>
+</div>
+<div class="field">
+<label>Посада <small>exp1_title</small></label>
+<input data-edit="exp1_title"/>
+</div>
+<div class="field">
+<label>Опис <small>exp1_body</small></label>
+<textarea data-edit="exp1_body"></textarea>
+</div>
+
+<h3 style="font-size:12px;color:var(--warm);margin:1.5rem 0 1rem;font-weight:600">Запис 2: Практика / Trainee</h3>
+<div class="grid-2">
+<div class="field">
+<label>Період <small>exp2_date</small></label>
+<input data-edit="exp2_date"/>
+</div>
+<div class="field">
+<label>Компанія <small>exp2_company</small></label>
+<input data-edit="exp2_company"/>
+</div>
+</div>
+<div class="field">
+<label>Посада <small>exp2_title</small></label>
+<input data-edit="exp2_title"/>
+</div>
+<div class="field">
+<label>Опис <small>exp2_body</small></label>
+<textarea data-edit="exp2_body"></textarea>
+</div>
+</div>
+
+<!-- EDUCATION -->
+<div class="section">
+<h2>Education / Навчання</h2>
+<div class="field">
+<label>Назва закладу <small>edu_school</small></label>
+<input data-edit="edu_school"/>
+</div>
+<div class="grid-2">
+<div class="field">
+<label>Спеціальність <small>edu_spec</small></label>
+<input data-edit="edu_spec"/>
+</div>
+</div>
+<div class="field">
+<label>Опис <small>edu_body</small></label>
+<textarea data-edit="edu_body"></textarea>
+</div>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+<h2>Skills / Навички (12 chips)</h2>
+<p style="font-size:12px;color:#888;margin-bottom:1rem">Кожен рядок — окремий чіп. Можна перейменувати або скоротити.</p>
+<div class="grid-2">
+<div class="field"><label>Навичка 1 <small>skill_1</small></label><input data-edit="skill_1"/></div>
+<div class="field"><label>Навичка 2 <small>skill_2</small></label><input data-edit="skill_2"/></div>
+<div class="field"><label>Навичка 3 <small>skill_3</small></label><input data-edit="skill_3"/></div>
+<div class="field"><label>Навичка 4 <small>skill_4</small></label><input data-edit="skill_4"/></div>
+<div class="field"><label>Навичка 5 <small>skill_5</small></label><input data-edit="skill_5"/></div>
+<div class="field"><label>Навичка 6 <small>skill_6</small></label><input data-edit="skill_6"/></div>
+<div class="field"><label>Навичка 7 <small>skill_7</small></label><input data-edit="skill_7"/></div>
+<div class="field"><label>Навичка 8 <small>skill_8</small></label><input data-edit="skill_8"/></div>
+<div class="field"><label>Навичка 9 <small>skill_9</small></label><input data-edit="skill_9"/></div>
+<div class="field"><label>Навичка 10 <small>skill_10</small></label><input data-edit="skill_10"/></div>
+<div class="field"><label>Навичка 11 <small>skill_11</small></label><input data-edit="skill_11"/></div>
+<div class="field"><label>Навичка 12 <small>skill_12</small></label><input data-edit="skill_12"/></div>
+</div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="section">
+<h2>Achievements / Досягнення (3 картки)</h2>
+<div class="field">
+<label>Досягнення 1 — заголовок <small>ach1_title</small></label>
+<input data-edit="ach1_title"/>
+</div>
+<div class="field">
+<label>Досягнення 1 — опис <small>ach1_body</small></label>
+<input data-edit="ach1_body"/>
+</div>
+<div class="field">
+<label>Досягнення 2 — заголовок <small>ach2_title</small></label>
+<input data-edit="ach2_title"/>
+</div>
+<div class="field">
+<label>Досягнення 2 — опис <small>ach2_body</small></label>
+<input data-edit="ach2_body"/>
+</div>
+<div class="field">
+<label>Досягнення 3 — заголовок <small>ach3_title</small></label>
+<input data-edit="ach3_title"/>
+</div>
+<div class="field">
+<label>Досягнення 3 — опис <small>ach3_body</small></label>
+<input data-edit="ach3_body"/>
+</div>
+</div>
+
+<!-- REFERENCES -->
+<div class="section">
+<h2>References / Рекомендації</h2>
+<div class="field">
+<label>Текст <small>refs_body</small></label>
+<textarea data-edit="refs_body" style="min-height:60px"></textarea>
+</div>
+</div>
+
+<!-- CONTACT -->
+<div class="section">
+<h2>Contact / Контакти</h2>
+<div class="grid-3">
+<div class="field">
+<label>Email <small>contact_email</small></label>
+<input data-edit="contact_email"/>
+</div>
+<div class="field">
+<label>Telegram <small>contact_telegram</small></label>
+<input data-edit="contact_telegram"/>
+</div>
+<div class="field">
+<label>Instagram <small>contact_instagram</small></label>
+<input data-edit="contact_instagram"/>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Password ──
+const PASSWORD = 'hot2025';
+const STORAGE_KEY = 'cvhot_edits';
+
+function checkLogin() {
+  const input = document.getElementById('password').value;
+  if (input === PASSWORD) {
+    document.getElementById('login').style.display = 'none';
+    loadEdits();
+  } else {
+    showToast('Невірний пароль', 'error');
+  }
+}
+document.getElementById('password').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkLogin();
+});
+
+// ── Defaults (so admin opens with current site content) ──
+const DEFAULTS = {
+  hero_kicker: 'КУХАР-КОНДИТЕР',
+  hero_title: "МАРІЯ<br/><span class=\"italic font-light\">З</span> ЛЮБОВ'Ю <span class=\"italic font-light text-accent-warm\">ДО</span> СМАКУ",
+  hero_subtitle: "Кухар гарячого цеху. Готую в The River Premium Club. Шукаю можливість рости в ресторані з високою гастрономією.",
+  about_p1: "Кухар гарячого цеху з фокусом на європейську класику та сучасні техніки презентації. Вірю, що кожна страва — це баланс чистого смаку, дисципліни на процесах та поваги до продукту.",
+  about_p2: "З вересня 2025 року працюю в The River Premium Club (Тернопіль) на гарячій лінії. Це мій старт у професії — щодня вдосконалюю техніку, працюю з преміальними продуктами та прагну в команду ресторану з високою гастрономією.",
+  exp1_date: 'Вересень 2025 — дотепер',
+  exp1_company: '@ The River Premium Club',
+  exp1_title: 'Кухар гарячої лінії',
+  exp1_body: "Тернопіль, вул. Чумацька 14А. Приготування страв гарячого цеху згідно з технологічними картками: стейки, паста, риба, бургери. Робота на відкритій кухні в умовах високої посадки, контроль якості та свіжості інгредієнтів за стандартами HACCP, мінімізація списань.",
+  exp2_date: 'Під час навчання у ВПУ',
+  exp2_company: '@ виробнича практика',
+  exp2_title: 'Kitchen Practice / Trainee Cook',
+  exp2_body: "Чортків. Участь у повному циклі сервісу — від підготовки інгредієнтів (mise en place) до подачі. Робота на позиціях гарячого цеху під керівництвом шеф-кухаря, дотримання стандартів кухні, санітарних норм та ротації продуктів. Участь у розробці нових страв.",
+  edu_school: 'Chortkiv Higher Vocational School / Чортківське Вище Професійне Училище',
+  edu_spec: 'Кухар-кондитер',
+  edu_body: 'Чортків, Україна. Здобула професійну освіту за спеціальністю «Кухар-кондитер». Опанувала технології приготування страв, основи кондитерської справи та організацію виробництва.',
+  skill_1: 'Гаряча лінія', skill_2: 'Стейки', skill_3: "М'ясо на грилі",
+  skill_4: 'Риба та морепродукти', skill_5: 'Паста ручної роботи', skill_6: 'Sous Vide',
+  skill_7: 'HACCP', skill_8: 'Місо-японські техніки', skill_9: 'Plating',
+  skill_10: 'Преміум-продукти', skill_11: 'Мінімізація списань', skill_12: 'Робота в high-volume',
+  ach1_title: 'Диплом кухаря-кондитера з відзнакою',
+  ach1_body: 'Чортківське ВПУ, 2025',
+  ach2_title: 'Швидке зростання у The River',
+  ach2_body: 'Від trainee до самостійної станції гарячої лінії за перший рік практики.',
+  ach3_title: 'Опанування Sous Vide',
+  ach3_body: 'Самостійно опанувала техніку низькотемпературного приготування та сучасні методи презентації.',
+  refs_body: 'Контакти шеф-кухаря та менеджера The River Premium Club надаються за запитом під час співбесіди.',
+  contact_email: 'mariia@email.com',
+  contact_telegram: '@mariia_cv',
+  contact_instagram: '@mariia.cv'
+};
+
+// ── Load & render ──
+function loadEdits() {
+  const inputs = document.querySelectorAll('[data-edit]');
+  document.getElementById('statFields').textContent = inputs.length;
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch(e) {}
+  inputs.forEach(input => {
+    const id = input.dataset.edit;
+    const value = (saved && saved[id] !== undefined) ? saved[id] : (DEFAULTS[id] || '');
+    input.value = value;
+  });
+  updateStats();
+  if (saved) {
+    const ts = localStorage.getItem(STORAGE_KEY + '_ts');
+    if (ts) document.getElementById('statSaved').textContent = new Date(ts).toLocaleString('uk-UA');
+  }
+}
+
+function collectEdits() {
+  const edits = {};
+  document.querySelectorAll('[data-edit]').forEach(input => {
+    edits[input.dataset.edit] = input.value;
+  });
+  return edits;
+}
+
+function saveEdits() {
+  const edits = collectEdits();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(edits));
+  localStorage.setItem(STORAGE_KEY + '_ts', new Date().toISOString());
+  updateStats();
+  showToast('✓ Збережено в localStorage. Сайт оновлено при наступному відвідуванні.', 'success');
+}
+
+function updateStats() {
+  const inputs = document.querySelectorAll('[data-edit]');
+  let filled = 0;
+  inputs.forEach(i => { if (i.value.trim()) filled++; });
+  document.getElementById('statFilled').textContent = filled;
+}
+
+function exportJSON() {
+  const edits = collectEdits();
+  const ts = new Date().toISOString();
+  const payload = { _meta: { exported: ts, site: 'hot.kitchen / cv' }, edits };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `cvhot-edits-${ts.slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('✓ JSON експортовано', 'success');
+}
+
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      const edits = data.edits || data;
+      let count = 0;
+      document.querySelectorAll('[data-edit]').forEach(input => {
+        if (edits[input.dataset.edit] !== undefined) {
+          input.value = edits[input.dataset.edit];
+          count++;
+        }
+      });
+      updateStats();
+      showToast(`✓ Імпортовано ${count} полів. Натисніть "Зберегти" щоб застосувати.`, 'success');
+    } catch (err) {
+      showToast('Помилка імпорту: ' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function resetAll() {
+  if (!confirm('Скинути всі редагування до типових значень? Це очистить localStorage.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(STORAGE_KEY + '_ts');
+  loadEdits();
+  showToast('Скинуто до типових значень', 'success');
+}
+
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.className = 'toast ' + type, 3500);
+}
+
+// Auto-login if previously authenticated this session
+sessionStorage.setItem('authed', 'true'); // no-op placeholder
+</script>
+
+</body>
+</html>
