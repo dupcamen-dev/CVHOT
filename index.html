@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth" lang="uk"><head>
+<html class="scroll-smooth" lang="uk" style="color-scheme: only light;"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#000000" name="theme-color"/>
+<meta content="#d7da8e" name="msapplication-navbutton-color"/>
+<meta content="#000000" name="apple-mobile-web-app-status-bar-style"/>
 <title>hot.kitchen / cv — Кухар-кондитер</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -271,6 +274,33 @@
         document.getElementById('cookie-banner').style.transform = 'translateY(100%)';
     }
 </script>
+<style>
+    #mobile-menu { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease; }
+    #mobile-menu.open { transform: translateX(0); opacity: 1; }
+    #mobile-menu.closed { transform: translateX(100%); opacity: 0; }
+    #menu-overlay { transition: opacity 0.3s ease; }
+    #menu-overlay.open { opacity: 1; pointer-events: auto; }
+    #menu-overlay.closed { opacity: 0; pointer-events: none; }
+    @media (max-width: 767px) {
+        .hero-mobile { min-height: 100dvh !important; padding-top: 80px !important; }
+        .hero-img-mobile { aspect-ratio: 1/1 !important; max-height: 50vh; }
+        .about-img-mobile { aspect-ratio: 4/3 !important; max-height: 40vh; }
+        .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+        .py-section-padding { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+        .gallery-mobile > div { height: 240px !important; }
+        .mt-16 { margin-top: 2rem !important; }
+        .gap-gutter { gap: 1rem !important; }
+        .mb-stack-lg { margin-bottom: 1.5rem !important; }
+        .counter-num { font-size: 2.5rem !important; }
+        .heading-line { font-size: 1.5rem !important; }
+        .font-display-lg-mobile { font-size: 2.5rem !important; line-height: 1.1 !important; }
+        .p-8 { padding: 1.25rem !important; }
+        .p-12 { padding: 1.5rem !important; }
+    }
+    @media (max-width: 380px) {
+        .hero-img-mobile { max-height: 40vh; }
+    }
+</style>
 <!-- TopNavBar Component -->
 <nav class="fixed top-0 w-full z-50 transition-all duration-300 py-4 bg-primary" id="mainNav">
 <div class="flex justify-between items-center w-full px-8">
@@ -285,14 +315,47 @@
 <a class="font-label-sm text-label-sm text-white/70 hover:text-white transition-all duration-300" href="#contact">Contact / Контакти</a>
 </div>
 <!-- Mobile Menu Toggle -->
-<button class="md:hidden text-white hover:opacity-70 transition-opacity duration-300">
-<span class="material-symbols-outlined" style="font-size: 28px;">menu</span>
+<button class="md:hidden text-white hover:opacity-70 transition-opacity duration-300 relative z-50" id="menu-toggle" aria-label="Menu">
+<span class="material-symbols-outlined" id="menu-icon" style="font-size: 28px;">menu</span>
 </button>
 </div>
 </nav>
+<!-- Mobile Menu Overlay -->
+<div class="fixed inset-0 bg-black/50 z-40 closed" id="menu-overlay"></div>
+<!-- Mobile Menu Panel -->
+<div class="fixed top-0 right-0 h-full w-72 bg-primary z-40 flex flex-col pt-24 pb-8 px-8 closed" id="mobile-menu">
+<a class="font-body-lg text-body-lg text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors" href="#about" onclick="closeMenu()">About / Про мене</a>
+<a class="font-body-lg text-body-lg text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors" href="#experience" onclick="closeMenu()">Experience / Досвід</a>
+<a class="font-body-lg text-body-lg text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors" href="#menu" onclick="closeMenu()">Menu / Меню</a>
+<a class="font-body-lg text-body-lg text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors" href="#gallery" onclick="closeMenu()">Gallery / Галерея</a>
+<a class="font-body-lg text-body-lg text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors" href="#contact" onclick="closeMenu()">Contact / Контакти</a>
+</div>
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const menuIcon = document.getElementById('menu-icon');
+    let menuOpen = false;
+    function openMenu() {
+        menuOpen = true;
+        mobileMenu.classList.remove('closed'); mobileMenu.classList.add('open');
+        menuOverlay.classList.remove('closed'); menuOverlay.classList.add('open');
+        menuIcon.textContent = 'close';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        menuOpen = false;
+        mobileMenu.classList.remove('open'); mobileMenu.classList.add('closed');
+        menuOverlay.classList.remove('open'); menuOverlay.classList.add('closed');
+        menuIcon.textContent = 'menu';
+        document.body.style.overflow = '';
+    }
+    menuToggle.addEventListener('click', () => { menuOpen ? closeMenu() : openMenu(); });
+    menuOverlay.addEventListener('click', closeMenu);
+</script>
 <main>
 <!-- Hero Section -->
-<section class="relative min-h-[921px] flex items-center pt-32 pb-section-padding px-8" style="background-color:#d7da8e">
+<section class="relative hero-mobile flex items-center pt-32 pb-section-padding px-8" style="background-color:#d7da8e">
 <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
 <!-- Text Content -->
 <div class="md:col-span-5 md:col-start-1 z-10 flex flex-col justify-center order-2 md:order-1 mt-12 md:mt-0 reveal-up">
@@ -314,7 +377,7 @@
 </div>
 <!-- Hero Image -->
 <div class="md:col-span-7 md:col-start-6 order-1 md:order-2 reveal-up reveal-delay-1">
-<div class="relative w-full aspect-[4/5] md:aspect-[3/4] image-zoom-container parallax shadow-2xl">
+<div class="relative w-full hero-img-mobile aspect-[4/5] md:aspect-[3/4] image-zoom-container parallax shadow-2xl">
 <img alt="Марія — кухар-кондитер." class="w-full h-full object-cover img-reveal" src="hero-dish.jpg"/>
 <!-- Decorative element -->
 <div class="absolute -bottom-6 -left-6 w-24 h-24 border-b-2 border-l-2 border-primary hidden md:block"></div>
@@ -450,7 +513,7 @@
 </a>
 </div>
 <!-- Asymmetric Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-[300px]">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 md:auto-rows-[300px] gallery-mobile">
 <div class="md:col-span-7 md:row-span-2 image-zoom-container parallax reveal-up reveal-delay-1">
 <img alt="Страва в ресторані." class="w-full h-full object-cover img-reveal" src="gallery-1.jpg"/>
 </div>
@@ -483,7 +546,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mt-16 items-start">
 <div class="md:col-span-5 reveal-up">
 <div class="relative">
-<div class="w-full aspect-[3/4] image-zoom-container parallax shadow-2xl">
+<div class="w-full aspect-[3/4] md:aspect-[3/4] about-img-mobile image-zoom-container parallax shadow-2xl">
 <img alt="Приготування страви." class="w-full h-full object-cover img-reveal" src="about-dish.jpg"/>
 </div>
 </div>
