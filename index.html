@@ -4,9 +4,9 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="only light" name="color-scheme"/>
-<meta content="#000000" name="theme-color"/>
-<meta content="#d7da8e" name="msapplication-navbutton-color"/>
-<meta content="#000000" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="#1a1a1a" name="theme-color"/>
+<meta content="#1a1a1a" name="msapplication-navbutton-color"/>
+<meta content="#1a1a1a" name="apple-mobile-web-app-status-bar-style"/>
 <title>hot.kitchen / cv — Кухар-кондитер</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -20,7 +20,8 @@
             theme: {
                 extend: {
                     "colors": {
-                        "accent": "#024b39",
+                        "accent": "#1a1a1a",
+                        "accent-warm": "#8b6f47",
                         "on-accent": "#ffffff",
                         "outline-variant": "#c4c7c7",
                         "on-error": "#ffffff",
@@ -255,9 +256,9 @@
 <body class="bg-background text-primary font-body-md antialiased overflow-x-hidden selection:bg-tertiary-container selection:text-on-tertiary">
 
 <!-- ── Preloader ── -->
-<div id="preloader" style="position:fixed;inset:0;z-index:9999;background:#024b39;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease,visibility 0.8s ease;">
-    <div style="font-family:'Playfair Display';font-size:clamp(2rem,6vw,4rem);color:#fff;letter-spacing:0.1em;margin-bottom:2rem;">hot.kitchen / cv</div>
-    <div style="width:40px;height:40px;border:2px solid rgba(255,255,255,0.15);border-top-color:#fff;border-radius:50%;animation:preloader-spin 0.8s linear infinite;"></div>
+<div id="preloader" style="position:fixed;inset:0;z-index:9999;background:#1a1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease,visibility 0.8s ease;">
+    <div style="font-family:'Playfair Display';font-size:clamp(2rem,6vw,4rem);color:#fff;letter-spacing:0.1em;margin-bottom:2rem;">hot.kitchen <span style="color:#8b6f47">/</span> cv</div>
+    <div style="width:40px;height:40px;border:2px solid rgba(255,255,255,0.15);border-top-color:#8b6f47;border-radius:50%;animation:preloader-spin 0.8s linear infinite;"></div>
 </div>
 <style>
     @keyframes preloader-spin { to { transform: rotate(360deg); } }
@@ -265,7 +266,7 @@
 </style>
 
 <!-- ── Cookie Consent ── -->
-<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:9998;background:#024b39;color:#fff;padding:1rem 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;transform:translateY(100%);transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);font-size:14px;">
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:9998;background:#1a1a1a;color:#fff;padding:1rem 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;transform:translateY(100%);transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);font-size:14px;">
     <span>Цей сайт використовує кукі-файли для покращення роботи. Продовжуючи перегляд, ви погоджуєтесь з цим.</span>
     <button onclick="acceptCookies()" style="background:#fff;color:#000;border:none;padding:0.6rem 1.8rem;cursor:pointer;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;">Прийняти</button>
 </div>
@@ -359,7 +360,7 @@
 </script>
 <main>
 <!-- Hero Section -->
-<section class="relative hero-mobile flex items-center pt-32 pb-section-padding px-8" style="background-color:#d7da8e">
+<section class="relative hero-mobile flex items-center pt-32 pb-section-padding px-8" style="background-color:#f5f1ea">
 <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
 <!-- Text Content -->
 <div class="md:col-span-5 md:col-start-1 z-10 flex flex-col justify-center order-2 md:order-1 mt-12 md:mt-0 reveal-up">
@@ -368,13 +369,13 @@
                     </p>
 <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-stack-md leading-tight reveal-up">
                         МАРІЯ<br/>
-<span class="italic font-light">З</span> ЛЮБОВ'Ю <span class="italic font-light">ДО</span> СМАКУ
+<span class="italic font-light">З</span> ЛЮБОВ'Ю <span class="italic font-light text-accent-warm">ДО</span> СМАКУ
                     </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg max-w-md reveal-up">
                         Кухар гарячого цеху. Готую в The River Premium Club. Шукаю можливість рости в ресторані з високою гастрономією.
 </p>
 <div class="flex gap-4">
-<a class="inline-flex items-center justify-center bg-accent text-on-accent font-label-sm text-label-sm px-8 py-4 uppercase tracking-wider hover:bg-primary transition-colors duration-300" href="#about">
+<a class="inline-flex items-center justify-center bg-accent-warm text-on-accent font-label-sm text-label-sm px-8 py-4 uppercase tracking-wider hover:bg-primary transition-colors duration-300" href="#about">
                             Про мене
                         </a>
 </div>
@@ -384,19 +385,19 @@
 <div class="relative w-full hero-img-mobile aspect-[4/5] md:aspect-[3/4] image-zoom-container parallax shadow-2xl">
 <img alt="Марія — кухар-кондитер." class="w-full h-full object-cover img-reveal" src="hero-dish.jpg"/>
 <!-- Decorative element -->
-<div class="absolute -bottom-6 -left-6 w-24 h-24 border-b-2 border-l-2 border-accent hidden md:block"></div>
+<div class="absolute -bottom-6 -left-6 w-24 h-24 border-b-2 border-l-2 border-accent-warm hidden md:block"></div>
 </div>
 </div>
 </div>
 </section>
  <!-- Menu Section -->
-<section class="py-section-padding px-8" id="menu" style="background-color:#f5efe6">
+<section class="py-section-padding px-8" id="menu" style="background-color:#e8dfd1">
 <div class="w-full">
 <div class="flex flex-col items-center text-center mb-stack-lg reveal-up">
 <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-4 heading-line">
                         MENU <span class="font-light italic text-secondary">/ КУЛІНАРНИЙ ПРОФІЛЬ</span>
                     </h2>
-<div class="w-12 h-px bg-accent mb-4"></div>
+<div class="w-12 h-px bg-accent-warm mb-4"></div>
 <p class="font-body-lg text-body-lg text-secondary max-w-2xl reveal-up">
                         Ключові страви та техніки гарячого цеху з меню The River Premium Club (Тернопіль).
 </p>
@@ -404,7 +405,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mt-16">
 <!-- Гарячі страви -->
 <div class="reveal-up reveal-delay-1">
-<h3 class="font-headline-md text-headline-md text-primary mb-stack-md pb-4 border-b border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-primary mb-stack-md pb-4 border-b border-accent-warm/40">
                             ГАРЯЧІ СТРАВИ <span class="font-light italic text-secondary text-body-lg">/ HOT DISHES</span>
                         </h3>
 <div class="flex flex-col gap-stack-md stagger">
@@ -454,7 +455,7 @@
 </div>
 <!-- Паста та бургери -->
 <div class="reveal-up reveal-delay-2 mt-12 lg:mt-0">
-<h3 class="font-headline-md text-headline-md text-primary mb-stack-md pb-4 border-b border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-primary mb-stack-md pb-4 border-b border-accent-warm/40">
                             ПАСТА ТА БУРГЕРИ <span class="font-light italic text-secondary text-body-lg">/ PASTA & BURGERS</span>
                         </h3>
 <div class="flex flex-col gap-stack-md stagger">
@@ -506,7 +507,7 @@
 <p class="font-body-md text-body-md text-secondary text-center mt-12 italic">* Повне меню ресторану The River Premium Club включає понад 120 страв: закуски, салати, суші, страви на грилі, десерти тощо.</p>
 </section>
  <!-- Gallery Section -->
-<section class="py-section-padding px-8" id="gallery" style="background-color:#d7da8e">
+<section class="py-section-padding px-8" id="gallery" style="background-color:#f5f1ea">
 <div class="w-full">
 <div class="flex justify-between items-end mb-stack-lg border-b border-outline-variant/30 pb-6 reveal-up">
 <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary uppercase tracking-tight heading-line">
@@ -537,13 +538,13 @@
 </div>
 </section>
  <!-- About Section -->
-<section class="py-section-padding px-8" id="about" style="background-color:#f5efe6">
+<section class="py-section-padding px-8" id="about" style="background-color:#e8dfd1">
 <div class="w-full">
 <div class="flex flex-col items-center text-center mb-stack-lg reveal-up">
 <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-4 heading-line">
                         ABOUT <span class="font-light italic text-secondary">/ ПРО МЕНЕ</span>
 </h2>
-<div class="w-12 h-px bg-accent mb-4"></div>
+<div class="w-12 h-px bg-accent-warm mb-4"></div>
 <p class="font-body-lg text-body-lg text-secondary max-w-2xl">
                         Любов до кулінарії з дитинства.
 </p>
@@ -617,7 +618,7 @@
 </div>
 </section>
  <!-- Contact Section -->
-<section class="py-section-padding px-8" id="contact" style="background-color:#d7da8e">
+<section class="py-section-padding px-8" id="contact" style="background-color:#f5f1ea">
 <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
 <!-- Text / Info -->
 <div class="reveal-up pr-0 md:pr-16">
@@ -665,7 +666,7 @@
 <textarea class="peer w-full bg-transparent border-0 border-b border-outline-variant py-3 text-primary placeholder-transparent focus:ring-0 focus:border-primary transition-colors font-body-md resize-none" id="message" placeholder="Повідомлення" rows="3"></textarea>
 <label class="absolute left-0 -top-3.5 text-secondary font-label-sm text-label-sm transition-all peer-placeholder-shown:text-body-md peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-label-sm peer-focus:text-primary" for="message">Повідомлення</label>
 </div>
-<button class="mt-4 bg-accent text-on-accent font-label-sm text-label-sm px-8 py-4 uppercase tracking-wider hover:bg-primary transition-colors duration-300 w-full md:w-auto self-start" type="button">
+<button class="mt-4 bg-accent-warm text-on-accent font-label-sm text-label-sm px-8 py-4 uppercase tracking-wider hover:bg-primary transition-colors duration-300 w-full md:w-auto self-start" type="button">
                             Надіслати
                         </button>
 </form>
@@ -718,7 +719,7 @@
         const backToTop = document.createElement('button');
         backToTop.innerHTML = '<span class="material-symbols-outlined">arrow_upward</span>';
         backToTop.setAttribute('aria-label', 'Нагору');
-        backToTop.style.cssText = 'position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:#024b39;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+        backToTop.style.cssText = 'position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:#8b6f47;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,0.15);';
         document.body.appendChild(backToTop);
         window.addEventListener('scroll', () => {
             backToTop.style.opacity = window.scrollY > 400 ? '1' : '0';
