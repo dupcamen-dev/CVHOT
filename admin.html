@@ -230,6 +230,7 @@
 <div class="topbar-actions">
 <button class="btn btn-ghost" onclick="window.open('index.html','_blank')">↗ Відкрити сайт</button>
 <button class="btn" onclick="saveEdits()">💾 Зберегти</button>
+<button class="btn btn-ghost" onclick="regeneratePDF()">🖨 Regenerate PDF</button>
 <button class="btn btn-ghost" onclick="exportJSON()">📥 Експорт JSON</button>
 <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">📤 Імпорт</button>
 <input id="importFile" type="file" accept=".json" style="display:none" onchange="importJSON(event)"/>
@@ -556,6 +557,18 @@ function resetAll() {
   localStorage.removeItem(STORAGE_KEY + '_ts');
   loadEdits();
   showToast('Скинуто до типових значень', 'success');
+}
+
+function regeneratePDF() {
+  // Save current edits to localStorage first
+  saveEdits();
+  // Open print-ready page in new tab; user saves as PDF via browser
+  const w = window.open('cv-print.html', '_blank');
+  if (!w) {
+    showToast('Дозвольте pop-up для генерації PDF', 'error');
+    return;
+  }
+  showToast('Відкриється нова вкладка → Ctrl/Cmd+P → Зберегти як PDF', 'success');
 }
 
 function showToast(msg, type = '') {

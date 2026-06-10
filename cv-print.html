@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Марія — CV (Print Preview)</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #1a1a1a;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    background: #f5f1ea;
+    padding: 2rem;
+  }
+  .print-hint {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+  }
+  .print-hint kbd {
+    background: #8b6f47;
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    font-family: monospace;
+  }
+  .print-btn {
+    background: #8b6f47;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .print-btn:hover { background: #1a1a1a; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .print-hint { display: none; }
+  }
+  .page {
+    background: #fff;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 18mm 16mm;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    min-height: 297mm;
+  }
+  .header {
+    border-bottom: 2px solid #8b6f47;
+    padding-bottom: 12pt;
+    margin-bottom: 14pt;
+  }
+  .name {
+    font-size: 26pt;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin-bottom: 2pt;
+  }
+  .title {
+    font-size: 11pt;
+    color: #8b6f47;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .contact {
+    margin-top: 8pt;
+    font-size: 9.5pt;
+    color: #444;
+  }
+  .contact span { margin-right: 14pt; }
+  .section {
+    margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .section h2 {
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #1a1a1a;
+    border-bottom: 1px solid #c8c6c2;
+    padding-bottom: 4pt;
+    margin-bottom: 8pt;
+    font-weight: 600;
+  }
+  .item { margin-bottom: 10pt; }
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2pt;
+  }
+  .item-title { font-weight: 600; font-size: 11pt; }
+  .item-date { color: #8b6f47; font-size: 9.5pt; font-weight: 500; }
+  .item-sub { font-style: italic; color: #444; font-size: 10pt; margin-bottom: 3pt; }
+  .item-body { font-size: 10pt; color: #1a1a1a; }
+  .item-body ul { margin-left: 16pt; margin-top: 2pt; }
+  .item-body li { margin-bottom: 1pt; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4pt 16pt;
+    font-size: 10pt;
+  }
+  .skill { display: flex; align-items: center; }
+  .skill::before {
+    content: "•";
+    color: #8b6f47;
+    font-weight: bold;
+    margin-right: 6pt;
+  }
+  .achievement { display: flex; align-items: baseline; margin-bottom: 5pt; font-size: 10pt; }
+  .achievement::before {
+    content: "▸";
+    color: #8b6f47;
+    margin-right: 8pt;
+    font-weight: bold;
+  }
+  .refs-note { font-size: 10pt; color: #444; font-style: italic; }
+  .footer {
+    margin-top: 20pt;
+    padding-top: 8pt;
+    border-top: 1px solid #c8c6c2;
+    font-size: 8.5pt;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="print-hint">
+  <span>💡 Натисніть <kbd>Ctrl/Cmd</kbd> + <kbd>P</kbd> → Зберегти як PDF, або скористайтесь кнопкою:</span>
+  <button class="print-btn" onclick="window.print()">Друкувати / Зберегти PDF</button>
+</div>
+
+<div class="page" id="cv-content">
+  <div class="header">
+    <div class="name" id="cv-name">МАРІЯ</div>
+    <div class="title" id="cv-title">Hot Kitchen Cook · Кухар гарячого цеху</div>
+    <div class="contact">
+      <span>📍 Тернопіль, Україна</span>
+      <span>✉ <span id="cv-email">mariia@email.com</span></span>
+      <span>✈ <span id="cv-telegram">@mariia_cv</span></span>
+      <span>◎ <span id="cv-instagram">@mariia.cv</span></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Про мене</h2>
+    <p id="cv-about-1">Кухар гарячого цеху з фокусом на європейську класику та сучасні техніки презентації. Працюю на гарячій лінії ресторану The River Premium Club (Тернопіль) з вересня 2025 року. Щодня вдосконалюю техніку, працюю з преміальними продуктами та прагну в команду ресторану з високою гастрономією.</p>
+  </div>
+
+  <div class="section">
+    <h2>Досвід роботи</h2>
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title" id="cv-exp1-title">Кухар гарячої лінії</span>
+        <span class="item-date" id="cv-exp1-date">Вересень 2025 — дотепер</span>
+      </div>
+      <div class="item-sub" id="cv-exp1-company">The River Premium Club · Тернопіль, вул. Чумацька 14А</div>
+      <div class="item-body">
+        <ul>
+          <li>Приготування страв гарячого цеху згідно з технологічними картками</li>
+          <li>Робота на відкритій кухні в умовах високої посадки</li>
+          <li>Контроль якості та свіжості інгредієнтів за стандартами HACCP</li>
+          <li>Мінімізація списань, контроль залишків</li>
+        </ul>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title" id="cv-exp2-title">Kitchen Practice / Trainee Cook</span>
+        <span class="item-date" id="cv-exp2-date">Під час навчання у ВПУ</span>
+      </div>
+      <div class="item-sub" id="cv-exp2-company">Виробнича практика · Чортків</div>
+      <div class="item-body">
+        <ul>
+          <li>Участь у повному циклі сервісу — від підготовки інгредієнтів до подачі</li>
+          <li>Робота на позиціях гарячого цеху під керівництвом шеф-кухаря</li>
+          <li>Дотримання стандартів кухні, санітарних норм та ротації продуктів</li>
+          <li>Підготовка mise en place та участь у розробці нових страв</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Освіта</h2>
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title" id="cv-edu-school">Chortkiv Higher Vocational School / Чортківське Вище Професійне Училище</span>
+        <span class="item-date">2021 — 2025</span>
+      </div>
+      <div class="item-body" id="cv-edu-body">Чортків, Україна. Здобула професійну освіту за спеціальністю «Кухар-кондитер». Опанувала технології приготування страв, основи кондитерської справи та організацію виробництва.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Ключові навички</h2>
+    <div class="skills-grid" id="cv-skills">
+      <div class="skill">Гаряча лінія</div>
+      <div class="skill">Стейки та м'ясо на грилі</div>
+      <div class="skill">Приготування риби та морепродуктів</div>
+      <div class="skill">Паста ручної роботи</div>
+      <div class="skill">Sous Vide та низькотемпературне приготування</div>
+      <div class="skill">HACCP та санітарні стандарти</div>
+      <div class="skill">Азійська кухня (місо, японські техніки)</div>
+      <div class="skill">Презентація страв (plating)</div>
+      <div class="skill">Робота з преміальними продуктами</div>
+      <div class="skill">Мінімізація списань, контроль залишків</div>
+      <div class="skill">Комунікація в команді під час сервісу</div>
+      <div class="skill">Стрес-менеджмент у high-volume</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Досягнення</h2>
+    <div class="achievement" id="cv-ach1">Диплом кухаря-кондитера з відзнакою, Чортківське ВПУ (2025)</div>
+    <div class="achievement" id="cv-ach2">Швидке зростання від trainee до самостійної станції гарячої лінії у The River Premium Club</div>
+    <div class="achievement" id="cv-ach3">Опанування Sous Vide та сучасних технік презентації в перший рік практики</div>
+  </div>
+
+  <div class="section">
+    <h2>Рекомендації</h2>
+    <p class="refs-note" id="cv-refs">Надаються за запитом. Контакти шеф-кухаря та менеджера The River Premium Club можуть бути надані під час співбесіди.</p>
+  </div>
+
+  <div class="footer">
+    hot.kitchen / cv · Згенеровано автоматично з сайту-резюме
+  </div>
+</div>
+
+<script>
+// Map site data-edit IDs to PDF elements
+const MAP = {
+  contact_email: 'cv-email',
+  contact_telegram: 'cv-telegram',
+  contact_instagram: 'cv-instagram',
+  exp1_title: 'cv-exp1-title',
+  exp1_date: 'cv-exp1-date',
+  exp1_company: 'cv-exp1-company',
+  exp2_title: 'cv-exp2-title',
+  exp2_date: 'cv-exp2-date',
+  exp2_company: 'cv-exp2-company',
+  edu_school: 'cv-edu-school',
+  edu_body: 'cv-edu-body',
+  ach1_title: 'cv-ach1',
+  ach2_title: 'cv-ach2',
+  ach3_title: 'cv-ach3',
+  refs_body: 'cv-refs'
+};
+
+(function() {
+  try {
+    const raw = localStorage.getItem('cvhot_edits');
+    if (!raw) return;
+    const edits = JSON.parse(raw);
+    Object.keys(MAP).forEach(id => {
+      if (edits[id] !== undefined) {
+        const el = document.getElementById(MAP[id]);
+        if (el) el.textContent = edits[id];
+      }
+    });
+    // Skills (12 chips)
+    const skillsContainer = document.getElementById('cv-skills');
+    if (skillsContainer) {
+      const newSkills = [];
+      for (let i = 1; i <= 12; i++) {
+        const id = 'skill_' + i;
+        const val = edits[id] || '';
+        if (val) newSkills.push('<div class="skill">' + val + '</div>');
+      }
+      skillsContainer.innerHTML = newSkills.join('');
+    }
+    // About (combined from 2 paragraphs)
+    const about = document.getElementById('cv-about-1');
+    if (about) {
+      const p1 = edits.about_p1 || '';
+      const p2 = edits.about_p2 || '';
+      about.textContent = (p1 + ' ' + p2).trim();
+    }
+  } catch (e) { console.warn('cvhot_edits load failed', e); }
+})();
+</script>
+
+</body>
+</html>
