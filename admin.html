@@ -396,6 +396,31 @@
 </div>
 </div>
 
+<!-- STATS / Impact metrics -->
+<div class="section">
+<h2>Stats / Метрики (в About)</h2>
+<p style="font-size:12px;color:#888;margin-bottom:1rem">4 лічильники під текстом About. Числа задають ціль для анімації counter; «Станція» — це короткий текст замість числа.</p>
+<div class="grid-2">
+<div class="field">
+<label>Страв за вечір <small>target = 80 (data-target)</small></label>
+<input type="number" value="80" id="stat_dishes"/>
+</div>
+<div class="field">
+<label>Посадки за зміну <small>target = 3 (data-target)</small></label>
+<input type="number" value="3" id="stat_sittings"/>
+</div>
+<div class="field">
+<label>Людей у бригаді <small>target = 5 (data-target)</small></label>
+<input type="number" value="5" id="stat_team"/>
+</div>
+<div class="field">
+<label>Станція (текст) <small>counter_stations</small></label>
+<input data-edit="counter_stations"/>
+</div>
+</div>
+<p style="font-size:11px;color:#888;margin-top:0.5rem">⚠ Числа лічильників редагуються напряму в <code>index.html</code> (атрибут <code>data-target</code>), бо вони анімуються. Тут редагується тільки «Станція».</p>
+</div>
+
 <!-- CONTACT -->
 <div class="section">
 <h2>Contact / Контакти</h2>
@@ -468,7 +493,8 @@ const DEFAULTS = {
   refs_body: 'Контакти шеф-кухаря та менеджера The River Premium Club надаються за запитом під час співбесіди.',
   contact_email: 'mariia@email.com',
   contact_telegram: '@mariia_cv',
-  contact_instagram: '@mariia.cv'
+  contact_instagram: '@mariia.cv',
+  counter_stations: 'Гарячий цех'
 };
 
 // ── Load & render ──
