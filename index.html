@@ -20,6 +20,8 @@
             theme: {
                 extend: {
                     "colors": {
+                        "accent": "#024b39",
+                        "on-accent": "#ffffff",
                         "outline-variant": "#c4c7c7",
                         "on-error": "#ffffff",
                         "on-surface-variant": "#444748",
@@ -253,7 +255,7 @@
 <body class="bg-background text-primary font-body-md antialiased overflow-x-hidden selection:bg-tertiary-container selection:text-on-tertiary">
 
 <!-- ── Preloader ── -->
-<div id="preloader" style="position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease,visibility 0.8s ease;">
+<div id="preloader" style="position:fixed;inset:0;z-index:9999;background:#024b39;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease,visibility 0.8s ease;">
     <div style="font-family:'Playfair Display';font-size:clamp(2rem,6vw,4rem);color:#fff;letter-spacing:0.1em;margin-bottom:2rem;">hot.kitchen / cv</div>
     <div style="width:40px;height:40px;border:2px solid rgba(255,255,255,0.15);border-top-color:#fff;border-radius:50%;animation:preloader-spin 0.8s linear infinite;"></div>
 </div>
@@ -263,7 +265,7 @@
 </style>
 
 <!-- ── Cookie Consent ── -->
-<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:9998;background:#1c1b1b;color:#fff;padding:1rem 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;transform:translateY(100%);transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);font-size:14px;">
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:9998;background:#024b39;color:#fff;padding:1rem 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;transform:translateY(100%);transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);font-size:14px;">
     <span>Цей сайт використовує кукі-файли для покращення роботи. Продовжуючи перегляд, ви погоджуєтесь з цим.</span>
     <button onclick="acceptCookies()" style="background:#fff;color:#000;border:none;padding:0.6rem 1.8rem;cursor:pointer;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;">Прийняти</button>
 </div>
@@ -304,7 +306,7 @@
     }
 </style>
 <!-- TopNavBar Component -->
-<nav class="fixed top-0 w-full z-50 transition-all duration-300 py-4 bg-primary" id="mainNav">
+<nav class="fixed top-0 w-full z-50 transition-all duration-300 py-4 bg-accent" id="mainNav">
 <div class="flex justify-between items-center w-full px-8">
 <!-- Brand -->
 <a class="font-headline-md text-headline-md tracking-tighter text-white" href="#">hot.kitchen / cv</a>
@@ -325,7 +327,7 @@
 <!-- Mobile Menu Overlay -->
 <div class="fixed inset-0 bg-black/50 z-40 closed" id="menu-overlay"></div>
 <!-- Mobile Menu Panel -->
-<div class="fixed top-0 right-0 h-full w-72 bg-primary z-40 flex flex-col pt-24 pb-8 px-8 closed" id="mobile-menu">
+<div class="fixed top-0 right-0 h-full w-72 bg-accent z-40 flex flex-col pt-24 pb-8 px-8 closed" id="mobile-menu">
 <a class="font-body-lg text-body-lg text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors" href="#about" onclick="closeMenu()">About / Про мене</a>
 <a class="font-body-lg text-body-lg text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors" href="#experience" onclick="closeMenu()">Experience / Досвід</a>
 <a class="font-body-lg text-body-lg text-white/80 hover:text-white py-4 border-b border-white/10 transition-colors" href="#menu" onclick="closeMenu()">Menu / Меню</a>
@@ -382,7 +384,7 @@
 <div class="relative w-full hero-img-mobile aspect-[4/5] md:aspect-[3/4] image-zoom-container parallax shadow-2xl">
 <img alt="Марія — кухар-кондитер." class="w-full h-full object-cover img-reveal" src="hero-dish.jpg"/>
 <!-- Decorative element -->
-<div class="absolute -bottom-6 -left-6 w-24 h-24 border-b-2 border-l-2 border-primary hidden md:block"></div>
+<div class="absolute -bottom-6 -left-6 w-24 h-24 border-b-2 border-l-2 border-accent hidden md:block"></div>
 </div>
 </div>
 </div>
@@ -504,7 +506,7 @@
 <p class="font-body-md text-body-md text-secondary text-center mt-12 italic">* Повне меню ресторану The River Premium Club включає понад 120 страв: закуски, салати, суші, страви на грилі, десерти тощо.</p>
 </section>
  <!-- Gallery Section -->
-<section class="py-section-padding px-8" id="gallery" style="background-color:#d7da8e">
+<section class="py-section-padding px-8 overflow-visible" id="gallery" style="background-color:#d7da8e">
 <div class="w-full">
 <div class="flex justify-between items-end mb-stack-lg border-b border-outline-variant/30 pb-6 reveal-up">
 <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary uppercase tracking-tight heading-line">
@@ -515,14 +517,14 @@
 </a>
 </div>
 <!-- Asymmetric Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 md:auto-rows-[300px] gallery-mobile">
-<div class="md:col-span-7 md:row-span-2 image-zoom-container parallax reveal-up reveal-delay-1">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 md:auto-rows-[300px] gallery-mobile -mt-16 md:-mt-24">
+<div class="md:col-span-7 md:row-span-2 image-zoom-container parallax reveal-up reveal-delay-1 shadow-xl">
 <img alt="Страва в ресторані." class="w-full h-full object-cover img-reveal" src="gallery-1.jpg"/>
 </div>
-<div class="md:col-span-5 md:row-span-1 image-zoom-container parallax reveal-up reveal-delay-2">
+<div class="md:col-span-5 md:row-span-1 image-zoom-container parallax reveal-up reveal-delay-2 shadow-lg">
 <img alt="Вишукана страва." class="w-full h-full object-cover img-reveal" src="gallery-2.jpg"/>
 </div>
-<div class="md:col-span-5 md:row-span-1 image-zoom-container parallax reveal-up reveal-delay-3">
+<div class="md:col-span-5 md:row-span-1 image-zoom-container parallax reveal-up reveal-delay-3 shadow-lg">
 <img alt="Страва в ресторані." class="w-full h-full object-cover img-reveal" src="gallery-3.jpg"/>
 </div>
 </div>
@@ -532,21 +534,26 @@
                     </a>
 </div>
 </div>
+</div>
+<div class="relative h-12 md:h-24 -mb-12 md:-mb-24 overflow-visible">
+  <div class="absolute left-1/2 -translate-x-1/2 w-px h-full bg-accent/30"></div>
+  <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-8 h-8 border-b-2 border-r-2 border-accent/50 -rotate-45 translate-y-1/2"></div>
+</div>
 </section>
  <!-- About Section -->
-<section class="py-section-padding px-8" id="about" style="background-color:#f5efe6">
+<section class="py-section-padding px-8 overflow-visible" id="about" style="background-color:#f5efe6">
 <div class="w-full">
 <div class="flex flex-col items-center text-center mb-stack-lg reveal-up">
 <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-4 heading-line">
                         ABOUT <span class="font-light italic text-secondary">/ ПРО МЕНЕ</span>
 </h2>
-<div class="w-12 h-px bg-primary mb-4"></div>
+<div class="w-12 h-px bg-accent mb-4"></div>
 <p class="font-body-lg text-body-lg text-secondary max-w-2xl">
                         Любов до кулінарії з дитинства.
 </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mt-16 items-start">
-<div class="md:col-span-5 reveal-up">
+<div class="md:col-span-5 reveal-up -mt-16 md:-mt-32">
 <div class="relative">
 <div class="w-full aspect-[3/4] md:aspect-[3/4] about-img-mobile image-zoom-container parallax shadow-2xl">
 <img alt="Приготування страви." class="w-full h-full object-cover img-reveal" src="about-dish.jpg"/>
@@ -663,7 +670,7 @@
 </section>
 </main>
 <!-- Footer Component -->
- <footer class="w-full py-section-padding bg-primary text-surface border-t border-outline-variant/30 dark:border-outline/10">
+ <footer class="w-full py-section-padding bg-accent text-surface border-t border-outline-variant/30">
 <div class="flex flex-col md:flex-row justify-between items-start md:items-center px-8 gap-stack-lg">
 <div class="font-display-lg text-headline-md text-surface">
                 hot.kitchen / cv
@@ -707,7 +714,7 @@
         const backToTop = document.createElement('button');
         backToTop.innerHTML = '<span class="material-symbols-outlined">arrow_upward</span>';
         backToTop.setAttribute('aria-label', 'Нагору');
-        backToTop.style.cssText = 'position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:#000;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+        backToTop.style.cssText = 'position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:#024b39;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,0.15);';
         document.body.appendChild(backToTop);
         window.addEventListener('scroll', () => {
             backToTop.style.opacity = window.scrollY > 400 ? '1' : '0';
