@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth" lang="uk" style="color-scheme: only light;"><head>
+<html class="scroll-smooth" lang="uk"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="only light" name="color-scheme"/>
 <meta content="#000000" name="theme-color"/>
 <meta content="#d7da8e" name="msapplication-navbutton-color"/>
 <meta content="#000000" name="apple-mobile-web-app-status-bar-style"/>
@@ -15,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
+            darkMode: false,
             theme: {
                 extend: {
                     "colors": {
@@ -106,6 +107,7 @@
         }
     </script>
 <style>
+        :root { color-scheme: light; }
         .image-zoom-container {
             overflow: hidden;
         }
